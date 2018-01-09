@@ -1,0 +1,184 @@
+
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="7RChtV9AH4M" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.gstatic.com/tv/thumb/movieposters/182388/p182388_p_v8_af.jpg" width="220" height="342">
+    <h2>Role Models</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="D3Yw9Yc1YmY" data-toggle="modal" data-target="#trailer">
+    <img src="http://cdn.playbuzz.com/cdn/a99cfa7f-1267-42ca-9ae3-516d37c42005/fb69c47f-a441-4abd-932c-73503410383c.jpg" width="220" height="342">
+    <h2>Fight Club</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="WlYj6uhs22U" data-toggle="modal" data-target="#trailer">
+    <img src="https://i.jeded.com/i/slc-punk.15726.jpg" width="220" height="342">
+    <h2>SLC Punk!</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="-YDk89e1miY" data-toggle="modal" data-target="#trailer">
+    <img src="https://s-media-cache-ak0.pinimg.com/originals/a5/ed/6f/a5ed6f32d0606542351902fb3871524c.jpg" width="220" height="342">
+    <h2>Requiem For A Dream</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="0ke-v0e3Cd4" data-toggle="modal" data-target="#trailer">
+    <img src="http://static.rogerebert.com/uploads/movie/movie_poster/dirty-rotten-scoundrels-1988/large_z1AOwsRQCtGqn0VYEK3RQ5bYcxm.jpg" width="220" height="342">
+    <h2>Dirty Rotten Scoundrels</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="nH9LZOXBMUE" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.impawards.com/1997/posters/good_will_hunting.jpg" width="220" height="342">
+    <h2>Good Will Hunting</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="z_AguDqCBvo" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.impawards.com/2001/posters/i_am_sam_ver1.jpg" width="220" height="342">
+    <h2>I Am Sam</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="7mICGcg5-pM" data-toggle="modal" data-target="#trailer">
+    <img src="https://s-media-cache-ak0.pinimg.com/originals/c3/bf/f3/c3bff3eec6f1b0e8f1437972f80d5493.jpg" width="220" height="342">
+    <h2>Death Proof</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="1Fg5iWmQjwk" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.impawards.com/2014/posters/grand_budapest_hotel.jpg" width="220" height="342">
+    <h2>The Grand Budapest Hotel</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="XxJDOkr_UhE" data-toggle="modal" data-target="#trailer">
+    <img src="https://images-na.ssl-images-amazon.com/images/I/51jlxsaTwLL._AC_UL320_SR236,320_.jpg" width="220" height="342">
+    <h2>The Graduate</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="mIE5HYkzvV0" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/9/95/Rocky_IV.jpg" width="220" height="342">
+    <h2>Rocky IV</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="UFuFFdK7i44" data-toggle="modal" data-target="#trailer">
+    <img src="https://kadreview.files.wordpress.com/2013/03/memento.jpg" width="220" height="342">
+    <h2>Memento</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="cd-go0oBF4Y" data-toggle="modal" data-target="#trailer">
+    <img src="http://static.rogerebert.com/uploads/movie/movie_poster/the-big-lebowski-1998/large_aHaVjVoXeNanfwUwQ92SG7tosFM.jpg" width="220" height="342">
+    <h2>The Big Lebowski</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="8QKE96wZTkw" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/d/d9/StepbrothersMP08.jpg" width="220" height="342">
+    <h2>Step Brothers</h2>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="s7EdQ4FqbhY" data-toggle="modal" data-target="#trailer">
+    <img src="https://unregardattentif.files.wordpress.com/2015/02/pulp_fiction-affiche.jpg" width="220" height="342">
+    <h2>Pulp Fiction</h2>
+</div>
+
+    </div>
+  </body>
+</html>
